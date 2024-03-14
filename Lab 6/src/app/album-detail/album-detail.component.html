@@ -3,7 +3,7 @@
     <h3>{{album.title}}</h3>
     <p>Edit Title Of Album</p>
     <label>
-      <input input="text" [(ngModel)]="name">
+      <input type ="text" [(ngModel)]="name">
     </label>
     <br>
     <div>
@@ -20,7 +20,7 @@
   
   <ul *ngIf="photos.length">
     <li *ngFor="let photo of photos">
-      {{photo.id}}) {{photo.title}}
+      {{photo.id}} {{photo.title}}
       <img src="{{photo.url}}" alt="photo of album">
     </li>
   </ul>
