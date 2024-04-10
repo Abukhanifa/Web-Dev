@@ -83,7 +83,7 @@ def company_vacancies(request, company_id):
 
 @csrf_exempt
 def vacancy_top_ten(request):
-    top_ten = Vacancy.objects.all().order_by('-salary').values()
+    top_ten = Vacancy.objects.all().order_by('-salary')[:10].values()
     serializer = VacancySerializer(top_ten, many = True)
     return JsonResponse(serializer.data, safe = False)
     
