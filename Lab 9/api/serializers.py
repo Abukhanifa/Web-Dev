@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from api.models import Vacancy
 
 class CompanySerializer(serializers.Serializer):
     id = serializers.IntegerField()
@@ -13,3 +14,9 @@ class VacancySerializer(serializers.Serializer):
     name = serializers.CharField()
     description = serializers.CharField()
     salary = serializers.FloatField()
+    companyId = CompanySerializer().id
+    
+    class Meta:
+        model = Vacancy
+        fields = ['companyId']
+    

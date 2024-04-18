@@ -13,7 +13,7 @@ def company_list(request):
         return JsonResponse(serializer.data, safe = False)
     elif request.method == "POST":
         data = json.loads(request.body)
-        company = Company.objects.create(name=data.get("name"))
+        company = Company.objects.create(name=data.get("name"), description = data.get("description"), city = data.get("city"), address = data.get("address"), companyId = data.get("companyId"))
         return JsonResponse(company.to_json(), status=201)
         
         
@@ -45,7 +45,7 @@ def vacancy_list(request):
         return JsonResponse(serializer.data, safe = False)
     elif request.method == "POST":
         data = json.loads(request.body)
-        vacancy = Vacancy.objects.create(name=data.get("name"), description=data.get("description"), city=data.get("city"), address=data.get("address"))
+        vacancy = Vacancy.objects.create(name=data.get("name"), description=data.get("description"), salary=data.get("salary"))
         return JsonResponse(vacancy.to_json(), status=201)
 
 
@@ -62,9 +62,6 @@ def vacancy_detail(request, vacancy_id):
     elif request.method == "PUT":
         data = json.loads(request.body)
         vacancy.name = data.get("name")
-        vacancy.description = data.get("description")
-        vacancy.salary = data.get("salary")
-        vacancy.companyId = data.get("companyId")
         vacancy.save()
     elif request.method == "DELETE":
         vacancy.delete()
