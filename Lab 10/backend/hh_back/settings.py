@@ -57,10 +57,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8080",
-    "http://localhost:61110",
+    "http://localhost:4200"
 ]
 
 ROOT_URLCONF = 'hh_back.urls'
